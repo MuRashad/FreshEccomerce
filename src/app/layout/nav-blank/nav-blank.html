@@ -1,0 +1,13 @@
+<div class="flex flex-col min-h-screen">
+
+  <app-navbar></app-navbar>
+
+  <!-- this grows to push footer down -->
+  <main class="flex-1">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- always at bottom, after content -->
+  <app-footer></app-footer>
+
+</div>

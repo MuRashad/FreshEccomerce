@@ -1,0 +1,40 @@
+<section>
+    <div class="container mx-auto my-4">
+        <div class="title my-4 font-bold">
+            <h1>Shop Cart</h1>
+            <p>total price: <span class="text-main">{{CardData?.totalCartPrice |currency:'EGP'}} </span></p>
+        </div>
+        @for(Products of productsInCard ;track Products._id ;let idx=$index ){
+        <div class="flex items-center justify-center gap-x-4 bg-gray-100 divide-y-2 divide-gray-400" >
+            <div class="x w-1/6">
+                <div class="image-cover cursor-pointer" role="button" (click)="goToPrdDetsilas(idx,Products)">
+                    <img [src]="Products.product.imageCover" alt="" class="md:h-[200px]">
+                </div>
+            </div>
+            <div class="y  w-4/6 ">
+                <div class="data py-3">
+                    <h5 class="my-2">{{Products.product.title}}</h5>
+                    <p class="my-2 text-main">price: <span>{{Products.price}}</span></p>
+                    <button  type="button" class="my-2 flex items-center cursor-pointer group" (click)="deleteItem(Products.product?.id)">
+                      <i class="fa-solid fa-trash text-green-500 group-hover:text-red-600"></i>                        
+                      <span class="group-hover:text-red-600 transition">remove</span>
+                    </button>
+                </div>
+            </div>
+            <div class="z w-1/6 flex items-center justify-center gap-x-2">
+                <button #btn1 class="border-main border-2 px-2 py-1 rounded-lg hover:bg-main hover:shadow
+                 hover:text-white font-extrabold text-lg disabled:opacity-50 disabled:cursor-not-allowed "
+                 (click)="changeCount(Products.count + 1,Products.product?.id,btn1,btn2)" >+</button>
+                <span class="font-bold">{{Products.count}}</span>
+                <button #btn2 class="border-main border-2 px-2 py-1 rounded-lg hover:bg-main hover:shadow
+                 hover:text-white font-extrabold text-lg disabled:opacity-50 disabled:cursor-not-allowed"(click)="changeCount(Products.count - 1 ,Products.product?.id,btn1,btn2)">-</button>
+            </div>
+        </div>
+        <br>
+        }
+    <button #payment [routerLink]="['/payment',cartOfProducts?.cartId]" type="button" class="btn-main flex items-center justify-center md:w-1/5" [disabled]="isLoading" >
+        Online Payment
+        <span class="ps-1"><img src="assets/images/visa-1.svg" alt="" class="w-6.25"></span>
+    </button>
+    </div>
+</section>

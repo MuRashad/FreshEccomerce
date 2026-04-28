@@ -1,0 +1,126 @@
+
+<div class="py-6 ">
+    <form class="md:max-w-lg max-w-sm mx-auto space-y-4 w-full"
+     method="post" [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+     <!-- <h1>{{registerForm.value|json}}</h1> -->
+    <h6>Register Now:</h6>
+    <div>
+        <label for="name" class="block mb-2.5 text-sm font-medium text-heading">First Name</label>
+        <input formControlName="name" type="text" id="name" name="name" class="border-2 border-gray-400  text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required
+        [class.border-red-500]="registerForm.get('name')?.touched &&registerForm.get('name')?.errors"/>
+       <!-- <p>{{registerForm.get('name')?.errors|json}}</p> -->
+    @if((registerForm.get('name')?.value?.length > 0 || registerForm.get('name')?.touched) 
+    && registerForm.get('name')?.errors){
+     <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+       @if(registerForm.get('name')?.getError('required')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+       }
+       @if(registerForm.get('name')?.getError('minlength')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+
+        <p><span class="font-medium me-1">Info alert!</span> input must be 3 character at least</p>
+       }
+       @if(registerForm.get('name')?.getError('maxlength')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+
+        <p><span class="font-medium me-1">Info alert!</span> input must be less than 20 characters </p>
+       }
+        </div>
+        }
+
+    </div>
+    <div>
+        <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Email</label>
+        <input formControlName="email" type="email" id="email" name="email" class="border-2
+         border-gray-400 text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs"
+         required  [class.border-red-500]="registerForm.get('email')?.touched &&registerForm.get('email')?.errors"/>
+    <!-- <h1>{{registerForm.get('email')?.errors|json}}</h1> -->
+        @if((registerForm.get('email')?.touched || registerForm.get('email')?.value?.length > 0)&&
+         registerForm.get('email')?.errors){
+     <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+       @if(registerForm.get('email')?.getError('required')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+       }
+       @if(registerForm.get('email')?.getError('email')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input must hve @gmail , @yahoo ,...</p>
+       }
+
+        </div>
+        }
+      
+    </div>
+    <div>
+        <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Password</label>
+        <input formControlName="password" type="password" id="password" name="password" class="border-2 border-gray-400 text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs"
+         required  [class.border-red-500]="registerForm.get('password')?.touched &&registerForm.get('password')?.errors"/>
+         @if((registerForm.get('password')?.touched || registerForm.get('password')?.value?.length > 0)&&
+         registerForm.get('password')?.errors){
+     <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+       @if(registerForm.get('password')?.getError('required')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+       }
+       @if(registerForm.get('password')?.getError('pattern')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> password must be uperCase and lowercase and numbers</p>
+       }
+
+        </div>
+        }
+    </div>
+    <div>
+        <label for="rePassword" class="block mb-2.5 text-sm font-medium text-heading">re-password</label>
+        <input formControlName="rePassword" type="password" id="rePassword" name="rePassword" 
+        class="border-2 border-gray-400 
+        text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" 
+        required  [class.border-red-500]="registerForm.get('rePassword')?.touched &&registerForm.get('rePassword')?.errors"/>
+         @if((registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.value?.length > 0)&&
+         registerForm.get('rePassword')?.errors){
+     <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+       @if(registerForm.get('rePassword')?.getError('required')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+           <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+       }
+       @if(registerForm.get('rePassword')?.getError('mismatch')){
+         <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+         <p><span class="font-medium me-1">Info alert!</span>your password is not the same</p>
+       }
+        </div>
+        }
+    </div>
+    <div>
+        <label for="phone" class="block mb-2.5 text-sm font-medium text-heading">phone</label>
+        <input formControlName="phone" type="tel" id="phone" name="phone" class="border-2 border-gray-400 text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" 
+        required  [class.border-red-500]="registerForm.get('phone')?.touched &&registerForm.get('phone')?.errors"/>
+   
+     @if((registerForm.get('phone')?.touched || registerForm.get('phone')?.value?.length > 0)&&
+         registerForm.get('phone')?.errors){
+     <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+       @if(registerForm.get('phone')?.getError('required')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+       }
+       @if(registerForm.get('phone')?.getError('pattern')){
+           <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+            <p><span class="font-medium me-1">Info alert!</span> msut be Egyption Number</p>
+       }
+
+        </div>
+        }   
+    </div>
+    <button type="submit" class="btn-main" [disabled]="registerForm.invalid || isLoading">
+         Register
+        <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin-pulse fa-spin-reverse"></i></span>
+    </button>
+
+</form>
+</div>
+

@@ -1,3 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Encode+Sans+Expanded:wght@300&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
 @import "tailwindcss";
+@layer base{
+
+  body{
+    
+  font-family: "Encode Sans Expanded", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+   h1 {
+    @apply text-3xl font-bold mb-2;
+  }
+  h2 {
+    @apply text-2xl font-semibold mb-2;
+  }
+  h3 {
+    @apply text-xl font-medium;
+  } 
+
+}
+@theme{
+ --color-main:#0aad0a ;
+ --color-light:#f0f3f2;
+ --shadow-boxgrey:rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --color-rating:#ffc908;
+  --ease-trasns:0.8;
+  --font-small:12px;
+}
+.btn-main{
+    @apply bg-main text-white px-2 py-1.5 border-2 border-none rounded-[5px]
+     cursor-pointer hover:bg-green-300 transition delay-150 duration-300 ease-in-out
+      disabled:cursor-not-allowed disabled:bg-slate-500;
+}
+.active-link{
+@apply text-white bg-main rounded-[5px] p-2
+}
+.text-main{
+@apply text-main ;
+}
+.bg-main-light{
+    @apply  bg-light ;
+}
+

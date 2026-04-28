@@ -1,0 +1,55 @@
+
+<div class="py-6 ">
+    <form class="md:max-w-lg max-w-sm mx-auto space-y-4 w-full"
+     method="post" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+     <!-- <h1>{{loginForm.value|json}}</h1> -->
+    <h6>Login Now:</h6>
+    <div>
+        <label for="email" class="block mb-2.5 text-sm font-medium text-heading">email</label>
+        <input formControlName="email"  type="text" id="email" class="border-2 border-gray-400  text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required
+        [class.border-red-500]="email?.value?.length > 0 && email?.errors"/>
+        @if( email?.touched && email?.errors){
+        <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+        @if(email?.getError('required')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+        }
+        @if(email?.getError('email')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> Email pattern is required</p>
+        }
+        </div>
+        }
+    </div>
+    <div>
+        <label for="password" class="block mb-2.5 text-sm font-medium text-heading">password</label>
+        <input  type="password" formControlName="password" id="password" class="border-2 border-gray-400  text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required
+        [class.border-red-500]="password?.touched && password?.errors"/>
+        @if(password?.touched && password?.errors){
+        <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+        @if(password?.getError('required')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> input is required</p>
+        }
+        @if(password?.getError('password')){
+        <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+        <p><span class="font-medium me-1">Info alert!</span> password pattern is required</p>
+        }
+        </div>
+        }
+    </div>
+<div class="flex justify-between items-center  ps-2 pe-2">
+        <button type="submit" class="btn-main" [disabled]="loginForm.invalid || isLoading">
+         Login
+        <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin-pulse fa-spin-reverse"></i></span>
+    </button>
+ <button class="cursor-pointer no-underline underline-offset-5
+  decoration-sky-500 text-sky-600 hover:decoration-3 hover:underline" (click)="forgetPassword()">Forget Password</button>
+</div>
+
+</form>
+</div>
+
+

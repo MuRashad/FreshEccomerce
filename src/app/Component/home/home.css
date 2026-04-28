@@ -1,0 +1,38 @@
+@layer base{
+ .swiper {
+      width: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      /* background: #444; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+    }
+.swiper-pagination{
+  position: static !important;
+  margin-top: 16px;
+}
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 10px;
+  background: #ccc;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.swipper-pagination-bullet-active{
+  background: #0aad0a; /* your main color */
+  width: 20px;
+  border-radius: 10px;
+}
+
+}

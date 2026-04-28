@@ -1,0 +1,65 @@
+<section>
+    <div class="container mx-auto my-4 py-4">
+        <form action="" method="post" [formGroup]="paymentForm" class="md:max-w-lg max-w-sm mx-auto space-y-4 w-full"
+            (ngSubmit)="handleForm()">
+
+            <div class="phone-input">
+                <label for="phone" class="block mb-2.5 text-sm font-medium text-heading">phone</label>
+                <input formControlName="phone" type="tel" id="phone" name="phone"
+                    class="border-2 border-gray-400 text-heading text-sm 
+                  rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required />
+            @if((phone?.touched ||phone?.value?.length > 0) && phone?.errors){
+                 <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+                @if( phone?.getError('pattern')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                  <p><span class="font-medium me-1">Info alert!</span>your phone number is not correct </p>
+                }    
+                @if( phone?.getError('required')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                  <p><span class="font-medium me-1">Info alert!</span>your phone must be typed </p>
+                }    
+                 </div>
+            }
+                </div>
+            <div class="">
+                <label for="city" class="block mb-2.5 text-sm font-medium text-heading">city</label>
+                <input formControlName="city" type="text" id="city" name="city"
+                    class="border-2 border-gray-400 text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required />
+                    @if((city?.touched ||city?.value?.length > 0) && city?.errors){
+                 <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+                @if( city?.getError('minlength')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                  <p><span class="font-medium me-1">Info alert!</span>your city name is not correct </p>
+                }    
+                @if( city?.getError('required')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                   <p><span class="font-medium me-1">Info alert!</span>your city must be typed </p>
+                }    
+                 </div>
+            }    
+        </div>
+            <div class="">
+                <label for="details" class="block mb-2.5 text-sm font-medium text-heading">details</label>
+                <textarea formControlName="details" type="text" id="details" name="details" cols="20" rows="4"
+                    class="border-2 border-gray-400 text-heading text-sm 
+        rounded-lg focus:outline-none focus:ring-0 focus:border-main focus:shadow-2xl block w-full px-3 py-2.5 shadow-xs" required></textarea>
+            
+                @if((details?.touched ||details?.value?.length > 0) && details?.errors){
+                 <div class="flex items-start sm:items-center p-4 mb-2 text-sm text-dark rounded-lg bg-red-200" role="alert">
+                @if( details?.getError('maxlength')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                  <p><span class="font-medium me-1">Info alert!</span>your details number is not correct </p>
+                }    
+                @if( details?.getError('required')){
+                   <p role="alert"><i class="fa-solid fa-circle-exclamation text-red-700 me-1"></i></p>
+                  <p><span class="font-medium me-1">Info alert!</span>your details must be typed </p>
+                }    
+                 </div>
+            }
+    </div>
+
+            <button type="submit" class="btn-main" [disabled]="paymentForm.invalid">Submit</button>
+        </form>
+    </div>
+</section>

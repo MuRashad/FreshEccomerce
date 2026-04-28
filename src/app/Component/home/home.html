@@ -1,0 +1,55 @@
+<div class="container mx-auto my-5">
+<div class="main-slider">
+  <div class="flex justify-center items-center gap-0">
+    
+    <!-- Slider -->
+    <div class="w-3/4 relative">
+      <div class="swiper" #swiperSlide>
+        
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/assets/images/main-slider-1.jpeg" class="w-full h-[400px] object-cover">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/main-slider-2.jpeg" class="w-full h-[400px] object-cover">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/main-slider-3.jpeg" class="w-full h-[400px] object-cover">
+          </div>
+        </div>
+   
+      </div>
+    </div>
+
+    <!-- Side Images -->
+    <div class="w-1/4 flex flex-col justify-between">
+      <img src="/assets/images/slide-2.jpeg" class="w-full h-[200px] object-cover">
+      <img src="/assets/images/main-slider-3.jpeg" class="w-full h-[200px] object-cover">
+    </div>
+
+  </div>
+</div>
+  <div class="categories shadow-boxgrey">
+      <h3>Shop Popular Categories</h3>
+      <div class="swiper mySwiper relative" #swiperRef>
+    <div class="swiper-wrapper ">
+      @for(cat of Categories; track cat._id){
+      <div class="swiper-slide">
+        <div class="category-image">
+           <img [src]="cat.image" alt="" class="">
+        </div>
+        <div class="category-name">
+          <h6>{{cat.name}}</h6>
+        </div>
+      </div>
+      }
+
+    </div>
+    <div class="swiper-pagination ">
+    </div>
+  </div>
+  </div>
+
+  </div>
+
+<app-products></app-products>
