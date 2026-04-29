@@ -10,12 +10,15 @@
             @for(product of products|searchElement:searchInpElement;track product.id){
             <div class="lg:w-2/12 md:w-6/12 w-full p-2">
                 <div class="bg-gray-50 rounded-lg py-2 px-4 inset-shadow-sm inset-shadow-gray-300/10 shadow-xl/20
-           transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:scale-[1.02]">
+           transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:scale-[1.02] relative group">
 
-                    <div class="card cursor-pointer relative" role="button" [routerLink]="['/prdDtls', product.id]">
-                          <div class="wishlist-btn absolute right-0 z-30">
-                              <button><i class="fa-solid fa-heart text-2xl text-gray-500/30"></i></button>
-                          </div>
+           <div class="wishlist-btn absolute top-5 right-5 z-30">
+               <button class="cursor-pointer" appChangeColor="text-gray-500"  [productId]="product.id ??'' ">
+                <i class="fa-solid fa-heart text-2xl invisible group-hover:visible">
+                </i>
+            </button>
+           </div>
+                    <div class="card cursor-pointer  " role="button" [routerLink]="['/prdDtls', product.id]">
                         
                         <figure class="image overflow-hidden rounded-lg">
                             <img [src]="product.imageCover" alt=""
